@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import {useDropzone} from "react-dropzone";
-import {useCallback} from "react";
-import GpxParser from "gpxparser";
+import { useDropzone } from 'react-dropzone';
+import { useCallback } from 'react';
+import GpxParser from 'gpxparser';
 
 type GPXDropZoneProps = Readonly<{
   onGPXLoad: (track: any) => void;
 }>;
 
-export default function GPXDropZone({onGPXLoad}: GPXDropZoneProps) {
+export default function GPXDropZone({ onGPXLoad }: GPXDropZoneProps) {
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       const parser = new GpxParser();
@@ -23,18 +23,18 @@ export default function GPXDropZone({onGPXLoad}: GPXDropZoneProps) {
     [onGPXLoad]
   );
 
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: false,
     accept: {
-      "text/plain": [".gpx"],
+      'text/plain': ['.gpx'],
     },
   });
 
   return (
     <div
       {...getRootProps()}
-      className="flex justify-center items-center h-screen w-full bg-gray-100 flex-col"
+      className="flex justify-center items-center h-[calc(100dvh)] w-full bg-gray-100 flex-col"
     >
       <input {...getInputProps()} />
       {isDragActive ? (
