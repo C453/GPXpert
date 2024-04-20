@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import GPXDropZone from "@/app/components/GPXDropZone";
+import GPXDropZone from '@/app/components/GPXDropZone';
 
-import "leaflet/dist/leaflet.css";
-import dynamic from "next/dynamic";
-import {useCallback, useState} from "react";
+import 'leaflet/dist/leaflet.css';
+import dynamic from 'next/dynamic';
+import { useCallback, useState } from 'react';
 
-import type {Track} from "gpxparser";
-import type {LatLngTuple} from "leaflet";
-import Toolbar from "@/app/components/Toolbar";
-import {createGPX, trackPointsToLatLng} from "@/app/utils/gpx";
-import {downloadGPX} from "@/app/utils/fileutils";
+import type { Track } from 'gpxparser';
+import type { LatLngTuple } from 'leaflet';
+import Toolbar from '@/app/components/Toolbar';
+import { createGPX, trackPointsToLatLng } from '@/app/utils/gpx';
+import { downloadGPX } from '@/app/utils/fileutils';
 
-const Map = dynamic(() => import("./components/Map"), {ssr: false});
+const Map = dynamic(() => import('./components/Map'), { ssr: false });
 
 export default function Home() {
   const [gpxTrack, setGPXTrack] = useState<Track | null>(null);
@@ -34,12 +34,12 @@ export default function Home() {
       return;
     }
     const exportedGPX = createGPX(positions);
-    downloadGPX(exportedGPX, gpxTrack?.name || "exported");
+    downloadGPX(exportedGPX, gpxTrack?.name || 'exported');
   }, [positions, gpxTrack]);
 
   const onCropChange = useCallback(
     (value: number | number[]) => {
-      if (!originalPositions || typeof value === "number") {
+      if (!originalPositions || typeof value === 'number') {
         return;
       }
       setPositions(originalPositions?.slice(value[0], value[1]));
@@ -48,7 +48,7 @@ export default function Home() {
   );
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex h-[calc(100dvh)] flex-col">
       {originalPositions && positions ? (
         <>
           <Map positions={positions} />

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import {Button, Slider} from "@nextui-org/react";
+import { Button, Slider } from '@nextui-org/react';
 
 type ToolbarProps = Readonly<{
   onExport: () => void;
@@ -16,11 +16,11 @@ export default function Toolbar({
   return (
     <footer
       style={{
-        display: "flex",
-        gap: "1rem",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "0.5rem",
+        display: 'flex',
+        gap: '1rem',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '0.5rem',
       }}
     >
       <Slider
@@ -35,7 +35,7 @@ export default function Toolbar({
         marks={[
           {
             value: numPoints / 2,
-            label: "50%",
+            label: '50%',
           },
         ]}
       />
